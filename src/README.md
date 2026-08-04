@@ -25,6 +25,24 @@ A super simple FastAPI application that allows students to view and sign up for 
    - API documentation: http://localhost:8000/docs
    - Alternative documentation: http://localhost:8000/redoc
 
+   ## Authentication (development/demo)
+
+   This project includes a simple in-memory authentication demo used for the exercise.
+
+   - Login: `POST /auth/login` with JSON `{ "email": "...", "password": "..." }` returns a `token`.
+   - Register: `POST /auth/register` with JSON `{ "email": "...", "password": "..." }` (optional `role` query param, default `student`).
+
+   Use the token with an `Authorization: Bearer <token>` header when calling protected endpoints such as signing up for activities.
+
+   Example login (curl):
+
+   ```bash
+   curl -X POST -H "Content-Type: application/json" \
+      -d '{"email":"student@mergington.edu","password":"studentpass"}' \
+      http://localhost:8000/auth/login
+   ```
+
+
 ## API Endpoints
 
 | Method | Endpoint                                                          | Description                                                         |
